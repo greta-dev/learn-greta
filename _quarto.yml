@@ -6,7 +6,7 @@ book:
   author: "Nick Tierney & Nick Golding"
   date: "2023/01/19"
   chapters:
-    - motivation.qmd
+    - index.qmd
     - simple-linear-model.qmd
     - simple-glm.qmd
     - example-ants.qmd

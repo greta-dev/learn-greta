@@ -32,6 +32,7 @@ ggplot(attitude,
 There's a somewhat positive trend here, let's create a basica linear regression, where we want to explain (predict) rating, using complains. We'll start with some vague priors on move on to better ones.
 
 ```{r}
+library(greta)
 # variables & priors
 int <- normal(0, 10)
 coef <- normal(0, 10)

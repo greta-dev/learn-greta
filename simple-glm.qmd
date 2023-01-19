@@ -4,6 +4,8 @@ Firstly, let's load up some packages, and take a look at the penguins data from 
 
 ```{r}
 library(palmerpenguins)
+library(tidyverse)
+library(greta)
 penguins
 ```
 
@@ -122,6 +124,7 @@ plot(draws)
 We can also use bayesplot to explore the convergence of the model
 
 ```{r}
+library(bayesplot)
 mcmc_trace(draws)
 mcmc_dens(draws)
 ```
@@ -266,7 +269,6 @@ https://cran.r-project.org/web/packages/bayesplot/vignettes/graphical-ppcs.html
 
 
 ```{r}
-
 library(bayesplot)
 
 # to do this we need some simulated predictions
@@ -367,11 +369,30 @@ sims_params_prior <- calculate(
   coef_body_mass,
   nsim = 500
 )
+```
 
+
+```{r}
 hist(sims_params_prior$`probability_female[1, ]`)
+```
+
+
+```{r}
 hist(sims_params_prior$`eta[1, ]`)
+```
+
+
+```{r}
 hist(sims_params_prior$intercept)
+```
+
+
+```{r}
 hist(sims_params_prior$coef_flipper_length)
+```
+
+
+```{r}
 hist(sims_params_prior$coef_body_mass)
 
 # your turn: how to visualise your posterior samples
