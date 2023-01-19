@@ -1,0 +1,85 @@
+# Simple Linear Model
+
+## Fitting a linear model
+
+To understand how greta works, and why it works, we are going to take an example and step through the components, stepping through these in different ways to explain different mechanisms.
+
+Let's load the tidyverse to provide some helpers.
+
+```{r}
+library(tidyverse)
+```
+
+We're going to be using the `attitude` data, looking at `?attitude`, here is the description of the data:
+
+> From a survey of the clerical employees of a large financial organization, the data are aggregated from the questionnaires of the approximately 35 employees for each of 30 (randomly selected) departments. The numbers give the percent proportion of favourable responses to seven questions in each department.
+
+```{r}
+attitude <- as_tibble(attitude,
+                      rownames = "department_id")
+attitude
+```
+
+Let's do a simple regression, predicting rating, based on complaints. That relationship looks like this:
+
+```{r}
+ggplot(attitude,
+       aes(x = complaints,
+           y = rating)) + 
+  geom_point()
+```
+
+There's a somewhat positive trend here, let's create a basica linear regression, where we want to explain (predict) rating, using complains. We'll start with some vague priors on move on to better ones.
+
+```{r}
+# variables & priors
+int <- normal(0, 10)
+coef <- normal(0, 10)
+sd <- cauchy(0, 3, truncation = c(0, Inf))
+
+# linear predictor
+mu <- int + coef * attitude$complaints
+
+# observation model - the likelihood
+distribution(attitude$rating) <- normal(mu, sd)
+
+m <- model(sd, int, coef)
+
+draws <- mcmc(m)
+```
+
+What happened here? 
+
+* Set the priors
+* Construct the linear predictor, `mu`
+* Set the likelihood
+* note the things in the model
+* perform MCMC
+
+Now let's inspect the MCMC, 
+
+```{r}
+summary(draws)
+```
+
+explore the fit
+
+```{r}
+library(bayesplot)
+mcmc_trace(draws)
+mcmc_dens(draws)
+```
+
+
+The equivalent for this would be a linear model like so:
+
+```{r}
+non_bayesian_model <- lm(
+  rating ~ complaints,
+  data = attitude
+)
+
+summary(non_bayesian_model)
+
+```
+

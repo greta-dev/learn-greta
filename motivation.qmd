@@ -1,0 +1,33 @@
+# Motivation {.unnumbered}
+
+This is an online book adapted from [previous course notes](https://github.com/njtierney/greta-course-notes) we have provided for teaching `greta`. While the [greta website](https://greta-stats.org/index.html) provides many examples of fitting models (for example, the [eight schools](https://greta-stats.org/articles/analyses/eight_schools.html) vignette), this book aims to provide further guided instructions on how to get up and running with `greta`. The rough structure of the book is to provide information on the following:
+
+This book is designed for those who want to learn how to do Bayesian modelling using the `greta` software. We assume users have the following background/experience:
+
+-   Familiarity with R
+
+-   Experience using linear models
+
+-   A rudimentary understanding of Bayesian inference
+
+After this course you will be able to:
+
+-   Fit and predict from Bayesian generalised linear models in greta
+
+-   Check model convergence and fit (including prior and posterior predictive checks)
+
+-   Summarise MCMC outputs
+
+-   Be able to fit more advanced models including mixture and hierarchical models
+
+-   Create visualisations and tables of the model outputs for use in understanding model fit and for publication.
+
+This book will also provide details on the following:
+
+-   installation instructions and troubleshooting
+
+-   technical details of the internals of greta
+
+-   Adding extensions to greta
+
+As this book develops, materials from here will likely be moved into the greta website.

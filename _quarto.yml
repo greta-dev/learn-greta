@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Introduction to greta for statistical modelling"
+  author: "Nick Tierney & Nick Golding"
+  date: "2023/01/19"
+  chapters:
+    - motivation.qmd
+    - simple-linear-model.qmd
+    - simple-glm.qmd
+    - example-ants.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
