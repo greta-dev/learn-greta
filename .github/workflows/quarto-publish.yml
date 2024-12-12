@@ -30,6 +30,14 @@ jobs:
       # Make sure you have a valid DESCRIPTION file
       - uses: r-lib/actions/setup-r-dependencies@v2
 
+      - name: Install greta deps
+        run: |
+          library(greta)
+          greta::install_greta_deps(timeout = 50)
+
+      - name: Situation Report on greta install
+        run: greta::greta_sitrep()
+
       # NOTE: If Publishing to GitHub Pages, set the permissions correctly (see top of this yaml)
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
